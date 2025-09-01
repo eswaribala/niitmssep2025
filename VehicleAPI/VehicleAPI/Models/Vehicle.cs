@@ -3,6 +3,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace VehicleAPI.Models
 {
+    public enum FuelType
+    {
+        PETROL,DIESEL,EV,GAS
+    }
+
     [Table("Vehicle")]
     public class Vehicle
     {
@@ -16,7 +21,7 @@ namespace VehicleAPI.Models
         public string Maker {  get; set; }
         [Required]
         [Column("DOR")]
-        
+        [DataType(DataType.Date)]
         public DateTime DOR {  get; set; }
         [Required]
         [RegularExpression("^[a-zA-Z0-9]{5,10}$",
@@ -33,6 +38,8 @@ namespace VehicleAPI.Models
         [RegularExpression("^[a-zA-Z]{3,10}$",
            ErrorMessage = "ChassisNo Should be in alphabets within the range of 3,25")]
         public string Color { get; set; }
+        [Column("FuelType")]
+        public FuelType FuelType { get; set; }
 
     }
 }
