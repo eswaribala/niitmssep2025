@@ -48,8 +48,26 @@ namespace VehicleAPI.Controllers
 
         // POST api/<VehiclesController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<IActionResult> Post([FromBody] VehicleDTO vehicleDTO)
         {
+            if (!ModelState.IsValid) return ValidationProblem(ModelState);
+            var entity = new Vehicle
+            {
+                RegistrationId = vehicleDTO.RegistrationId,
+                Maker = vehicleDTO.Maker,
+                DOR = vehicleDTO.DOR,
+                ChassisNo = vehicleDTO.ChassisNo,
+                EngineNo = vehicleDTO.EngineNo,
+                Color = vehicleDTO.Color,
+                FuelType = vehicleDTO.FuelType
+            };
+            var vehicle=await _vehicleRepo.AddVehicle(entity);
+            return Ok(new VehicleReadDTO(
+             vehicle.RegistrationId, vehicle.Maker, vehicle.Color, vehicle.ChassisNo, vehicle.EngineNo, vehicle.DOR, vehicle.FuelType
+
+        ));
+
+
         }
 
         // PUT api/<VehiclesController>/5

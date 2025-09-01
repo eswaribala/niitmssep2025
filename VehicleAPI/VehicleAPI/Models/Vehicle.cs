@@ -39,6 +39,7 @@ namespace VehicleAPI.Models
            ErrorMessage = "ChassisNo Should be in alphabets within the range of 3,25")]
         public string Color { get; set; }
         [Column("FuelType")]
+        
         public FuelType FuelType { get; set; }
 
     }
