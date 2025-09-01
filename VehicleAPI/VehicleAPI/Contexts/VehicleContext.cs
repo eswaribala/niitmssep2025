@@ -12,5 +12,11 @@ namespace VehicleAPI.Contexts
 
         public DbSet<Vehicle> Vehicles { get; set; }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+           
+            modelBuilder.Entity<Vehicle>().Property(v => v.FuelType)
+                .HasConversion<string>();
+        }
     }
 }
