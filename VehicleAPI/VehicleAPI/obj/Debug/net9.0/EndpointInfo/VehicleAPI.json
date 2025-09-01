@@ -178,13 +178,12 @@
     "schemas": {
       "FuelType": {
         "enum": [
-          0,
-          1,
-          2,
-          3
+          "PETROL",
+          "DIESEL",
+          "EV",
+          "GAS"
         ],
-        "type": "integer",
-        "format": "int32"
+        "type": "string"
       },
       "VehicleDTO": {
         "type": "object",
