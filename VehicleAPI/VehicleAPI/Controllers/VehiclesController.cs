@@ -72,7 +72,7 @@ namespace VehicleAPI.Controllers
 
         // PUT api/<VehiclesController>/5
         [HttpPut("{regNo}/{color}")]
-        public async Task<IActionResult> Put(int id, [FromBody] string regNo,string color)
+        public async Task<IActionResult> Put(string regNo,string color)
         {
             var vehicle = await _vehicleRepo.UpdateVehicle(regNo, color);
             return Ok(new VehicleReadDTO(
