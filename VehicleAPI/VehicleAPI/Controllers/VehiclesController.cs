@@ -76,7 +76,7 @@ namespace VehicleAPI.Controllers
         {
             var vehicle = await _vehicleRepo.UpdateVehicle(regNo, color);
             return Ok(new VehicleReadDTO(
-                         vehicle.RegistrationId, vehicle.Maker, vehicle.Color, vehicle.ChassisNo, vehicle.EngineNo, vehicle.DOR, vehicle.FuelType
+                         vehicle.RegistrationId, vehicle.Maker, vehicle.Color, vehicle.ChassisNo, vehicle.EngineNo, vehicle.DOR, vehicle.FuelType));
 
         }
 
