@@ -1,32 +1,65 @@
-﻿using VehicleAPI.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using VehicleAPI.Contexts;
+using VehicleAPI.Models;
 
 namespace VehicleAPI.Repositories
 {
     public class VehicleRepo : IVehicleRepo
     {
-        public Task<Vehicle> AddVehicle(Vehicle vehicle)
+        private VehicleContext _vehicleContext;
+
+        public VehicleRepo(VehicleContext vehicleContext) {
+            _vehicleContext = vehicleContext;        
+        
+        }
+        public async Task<Vehicle> AddVehicle(Vehicle vehicle)
         {
-            throw new NotImplementedException();
+           var result= await _vehicleContext.Vehicles.AddAsync(vehicle);
+            await _vehicleContext.SaveChangesAsync();
+            return result.Entity;
+
+
         }
 
-        public Task<Vehicle> GetVehicle(string vehicleId)
+        public async Task<Vehicle> GetVehicle(string vehicleId)
         {
-            throw new NotImplementedException();
+          var vehicle= await _vehicleContext.Vehicles.FirstOrDefaultAsync(v=>v.RegistrationId == vehicleId);
+            if (vehicle == null)
+            {
+                return null;
+            }
+            return vehicle;
         }
 
-        public Task<IEnumerable<Vehicle>> GetVehicles()
+        public async Task<IEnumerable<Vehicle>> GetVehicles()
         {
-            throw new NotImplementedException();
+            return await _vehicleContext.Vehicles.ToListAsync();
         }
 
-        public Task<bool> RemoveVehicle(Vehicle vehicle)
+        public async Task<bool> RemoveVehicle(string vehicleId)
         {
-            throw new NotImplementedException();
+            var status = false;
+            var vehicle = await _vehicleContext.Vehicles.FirstOrDefaultAsync(v => v.RegistrationId == vehicleId);
+            if (vehicle!=null)
+            {
+               _vehicleContext.Vehicles.Remove(vehicle);
+                await _vehicleContext.SaveChangesAsync();
+                status = true;
+            }
+            return status;
+
         }
 
-        public Task<Vehicle> UpdateVehicle(string RegNo, string color)
+        public async Task<Vehicle> UpdateVehicle(string RegNo, string color)
         {
-            throw new NotImplementedException();
+            var vehicle = await _vehicleContext.Vehicles.FirstOrDefaultAsync(v => v.RegistrationId == RegNo);
+            if (vehicle == null)
+            {
+                return null;
+            }
+            vehicle.Color = color;
+            await _vehicleContext.SaveChangesAsync();
+            return vehicle;
         }
     }
 }
