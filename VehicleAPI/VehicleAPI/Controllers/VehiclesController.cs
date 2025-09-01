@@ -71,15 +71,25 @@ namespace VehicleAPI.Controllers
         }
 
         // PUT api/<VehiclesController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut("{regNo}/{color}")]
+        public async Task<IActionResult> Put(int id, [FromBody] string regNo,string color)
         {
+            var vehicle = await _vehicleRepo.UpdateVehicle(regNo, color);
+            return Ok(new VehicleReadDTO(
+                         vehicle.RegistrationId, vehicle.Maker, vehicle.Color, vehicle.ChassisNo, vehicle.EngineNo, vehicle.DOR, vehicle.FuelType
+
         }
 
         // DELETE api/<VehiclesController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<IActionResult> Delete(string id)
         {
+           var result= await _vehicleRepo.RemoveVehicle(id);
+            if (result)
+                return Ok();
+            else
+                return BadRequest();
+
         }
     }
 }
