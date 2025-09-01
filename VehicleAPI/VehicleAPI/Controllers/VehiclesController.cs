@@ -86,9 +86,9 @@ namespace VehicleAPI.Controllers
         {
            var result= await _vehicleRepo.RemoveVehicle(id);
             if (result)
-                return Ok();
+                return Ok("Vehicle Removed");
             else
-                return BadRequest();
+                return NotFound();
 
         }
     }
