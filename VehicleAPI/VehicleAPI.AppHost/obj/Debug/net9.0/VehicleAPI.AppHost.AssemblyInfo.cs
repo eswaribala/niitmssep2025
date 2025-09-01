@@ -11,7 +11,7 @@
 using System;
 using System.Reflection;
 
-[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("197ddac0-729e-40ea-8012-d48794a5af6d")]
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("fb0c12b5-0102-4830-8c67-7002d2ca0518")]
 [assembly: System.Reflection.AssemblyMetadata("dcpclipath", "C:\\Users\\param\\.nuget\\packages\\aspire.hosting.orchestration.win-x64\\9.2.1\\tools\\d" +
     "cp.exe")]
 [assembly: System.Reflection.AssemblyMetadata("dcpextensionpaths", "C:\\Users\\param\\.nuget\\packages\\aspire.hosting.orchestration.win-x64\\9.2.1\\tools\\e" +
@@ -26,7 +26,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("VehicleAPI.AppHost")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9a92b004233d0e6db12f36bda699d69907d578ef")]
 [assembly: System.Reflection.AssemblyProductAttribute("VehicleAPI.AppHost")]
 [assembly: System.Reflection.AssemblyTitleAttribute("VehicleAPI.AppHost")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

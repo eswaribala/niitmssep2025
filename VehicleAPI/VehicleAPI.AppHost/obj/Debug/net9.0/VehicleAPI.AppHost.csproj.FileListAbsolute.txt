@@ -129,6 +129,7 @@ E:\boeingsep2025ws\VehicleAPI\VehicleAPI.AppHost\obj\Debug\net9.0\VehicleAPI.App
 E:\boeingsep2025ws\VehicleAPI\VehicleAPI.AppHost\obj\Debug\net9.0\VehicleAPI.AppHost.csproj.CoreCompileInputs.cache
 E:\boeingsep2025ws\VehicleAPI\VehicleAPI.AppHost\obj\Debug\net9.0\Aspire\references\VehicleAPI.ProjectMetadata.g.cs
 E:\boeingsep2025ws\VehicleAPI\VehicleAPI.AppHost\obj\Debug\net9.0\Aspire\references\_AppHost.ProjectMetadata.g.cs
+E:\boeingsep2025ws\VehicleAPI\VehicleAPI.AppHost\obj\Debug\net9.0\VehicleAPI.AppHost.sourcelink.json
 E:\boeingsep2025ws\VehicleAPI\VehicleAPI.AppHost\obj\Debug\net9.0\VehicleA.B146CC90.Up2Date
 E:\boeingsep2025ws\VehicleAPI\VehicleAPI.AppHost\obj\Debug\net9.0\VehicleAPI.AppHost.dll
 E:\boeingsep2025ws\VehicleAPI\VehicleAPI.AppHost\obj\Debug\net9.0\refint\VehicleAPI.AppHost.dll

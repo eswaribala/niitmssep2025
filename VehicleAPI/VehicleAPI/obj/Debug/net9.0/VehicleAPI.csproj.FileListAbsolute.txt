@@ -47,6 +47,9 @@ E:\boeingsep2025ws\VehicleAPI\VehicleAPI\bin\Debug\net9.0\OpenTelemetry.Instrume
 E:\boeingsep2025ws\VehicleAPI\VehicleAPI\bin\Debug\net9.0\Polly.Core.dll
 E:\boeingsep2025ws\VehicleAPI\VehicleAPI\bin\Debug\net9.0\Polly.Extensions.dll
 E:\boeingsep2025ws\VehicleAPI\VehicleAPI\bin\Debug\net9.0\Polly.RateLimiting.dll
+E:\boeingsep2025ws\VehicleAPI\VehicleAPI\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
+E:\boeingsep2025ws\VehicleAPI\VehicleAPI\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+E:\boeingsep2025ws\VehicleAPI\VehicleAPI\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 E:\boeingsep2025ws\VehicleAPI\VehicleAPI\bin\Debug\net9.0\VehicleAPI.ServiceDefaults.dll
 E:\boeingsep2025ws\VehicleAPI\VehicleAPI\bin\Debug\net9.0\VehicleAPI.ServiceDefaults.pdb
 E:\boeingsep2025ws\VehicleAPI\VehicleAPI\obj\Debug\net9.0\VehicleAPI.csproj.AssemblyReference.cache
@@ -57,6 +60,7 @@ E:\boeingsep2025ws\VehicleAPI\VehicleAPI\obj\Debug\net9.0\VehicleAPI.AssemblyInf
 E:\boeingsep2025ws\VehicleAPI\VehicleAPI\obj\Debug\net9.0\VehicleAPI.csproj.CoreCompileInputs.cache
 E:\boeingsep2025ws\VehicleAPI\VehicleAPI\obj\Debug\net9.0\VehicleAPI.MvcApplicationPartsAssemblyInfo.cs
 E:\boeingsep2025ws\VehicleAPI\VehicleAPI\obj\Debug\net9.0\VehicleAPI.MvcApplicationPartsAssemblyInfo.cache
+E:\boeingsep2025ws\VehicleAPI\VehicleAPI\obj\Debug\net9.0\VehicleAPI.sourcelink.json
 E:\boeingsep2025ws\VehicleAPI\VehicleAPI\obj\Debug\net9.0\rjimswa.dswa.cache.json
 E:\boeingsep2025ws\VehicleAPI\VehicleAPI\obj\Debug\net9.0\rjsmrazor.dswa.cache.json
 E:\boeingsep2025ws\VehicleAPI\VehicleAPI\obj\Debug\net9.0\rjsmcshtml.dswa.cache.json
@@ -72,6 +76,3 @@ E:\boeingsep2025ws\VehicleAPI\VehicleAPI\obj\Debug\net9.0\refint\VehicleAPI.dll
 E:\boeingsep2025ws\VehicleAPI\VehicleAPI\obj\Debug\net9.0\VehicleAPI.pdb
 E:\boeingsep2025ws\VehicleAPI\VehicleAPI\obj\Debug\net9.0\VehicleAPI.genruntimeconfig.cache
 E:\boeingsep2025ws\VehicleAPI\VehicleAPI\obj\Debug\net9.0\ref\VehicleAPI.dll
-E:\boeingsep2025ws\VehicleAPI\VehicleAPI\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
-E:\boeingsep2025ws\VehicleAPI\VehicleAPI\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
-E:\boeingsep2025ws\VehicleAPI\VehicleAPI\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll

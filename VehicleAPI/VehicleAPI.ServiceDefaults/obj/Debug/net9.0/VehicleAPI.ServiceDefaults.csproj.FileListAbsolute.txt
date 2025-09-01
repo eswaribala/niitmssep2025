@@ -6,6 +6,7 @@ E:\boeingsep2025ws\VehicleAPI\VehicleAPI.ServiceDefaults\obj\Debug\net9.0\Vehicl
 E:\boeingsep2025ws\VehicleAPI\VehicleAPI.ServiceDefaults\obj\Debug\net9.0\VehicleAPI.ServiceDefaults.AssemblyInfoInputs.cache
 E:\boeingsep2025ws\VehicleAPI\VehicleAPI.ServiceDefaults\obj\Debug\net9.0\VehicleAPI.ServiceDefaults.AssemblyInfo.cs
 E:\boeingsep2025ws\VehicleAPI\VehicleAPI.ServiceDefaults\obj\Debug\net9.0\VehicleAPI.ServiceDefaults.csproj.CoreCompileInputs.cache
+E:\boeingsep2025ws\VehicleAPI\VehicleAPI.ServiceDefaults\obj\Debug\net9.0\VehicleAPI.ServiceDefaults.sourcelink.json
 E:\boeingsep2025ws\VehicleAPI\VehicleAPI.ServiceDefaults\obj\Debug\net9.0\VehicleAPI.ServiceDefaults.dll
 E:\boeingsep2025ws\VehicleAPI\VehicleAPI.ServiceDefaults\obj\Debug\net9.0\refint\VehicleAPI.ServiceDefaults.dll
 E:\boeingsep2025ws\VehicleAPI\VehicleAPI.ServiceDefaults\obj\Debug\net9.0\VehicleAPI.ServiceDefaults.pdb
