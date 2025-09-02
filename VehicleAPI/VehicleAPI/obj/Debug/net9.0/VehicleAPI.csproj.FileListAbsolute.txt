@@ -243,3 +243,4 @@ E:\boeingsep2025ws\VehicleAPI\VehicleAPI\bin\Debug\net9.0\HotChocolate.Utilities
 E:\boeingsep2025ws\VehicleAPI\VehicleAPI\bin\Debug\net9.0\HotChocolate.Validation.dll
 E:\boeingsep2025ws\VehicleAPI\VehicleAPI\bin\Debug\net9.0\System.IO.Hashing.dll
 E:\boeingsep2025ws\VehicleAPI\VehicleAPI\bin\Debug\net9.0\Yarp.ReverseProxy.dll
+E:\boeingsep2025ws\VehicleAPI\VehicleAPI\bin\Debug\net9.0\VaultSharp.dll
