@@ -7,7 +7,9 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using VehicleAPI.Contexts;
 using VehicleAPI.DTO;
+using VehicleAPI.Graphql;
 using VehicleAPI.Repositories;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -89,6 +91,16 @@ builder.Services.AddControllersWithViews(options =>
         options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
 });
 
+//GraphQL setup
+builder.Services
+    .AddGraphQLServer()
+    .RegisterDbContextFactory<VehicleContext>()
+    .AddQueryType<Query>()
+    .AddMutationType<Mutation>()
+    .AddProjections()
+    .AddFiltering()
+    .AddSorting();
+
 var app = builder.Build();
 
 app.MapDefaultEndpoints();
@@ -116,6 +128,6 @@ using (var scope = app.Services.CreateScope())
     }
 }
 
-
+app.MapGraphQL("/graphql");
 
 app.Run();
