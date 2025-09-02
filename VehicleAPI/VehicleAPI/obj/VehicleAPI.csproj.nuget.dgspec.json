@@ -215,6 +215,10 @@
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[9.0.4, )"
+            },
+            "VaultSharp": {
+              "target": "Package",
+              "version": "[1.17.5.1, )"
             }
           },
           "imports": [

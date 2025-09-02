@@ -27,10 +27,13 @@ builder.Services.AddControllers()
     });
 
 
-builder.Services.AddDbContext<VehicleContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"),
-    sql => sql.EnableRetryOnFailure(maxRetryCount: 5, maxRetryDelay: TimeSpan.FromSeconds(10), errorNumbersToAdd: null)
-    ));
+//builder.Services.AddDbContext<VehicleContext>(options =>
+//    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"),
+//    sql => sql.EnableRetryOnFailure(maxRetryCount: 5, maxRetryDelay: TimeSpan.FromSeconds(10), errorNumbersToAdd: null)
+//    ));
+
+//Externalize the connection string for use in EF Core CLI tools
+
 
 
 builder.Services.AddTransient<IVehicleRepo,VehicleRepo>();

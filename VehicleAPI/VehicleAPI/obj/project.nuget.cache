@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "u6TUlbL3mZ4=",
+  "dgSpecHash": "63e6VyxhJEI=",
   "success": true,
   "projectFilePath": "E:\\boeingsep2025ws\\VehicleAPI\\VehicleAPI\\VehicleAPI.csproj",
   "expectedPackageFiles": [
@@ -163,6 +163,7 @@
     "C:\\Users\\param\\.nuget\\packages\\system.threading.ratelimiting\\8.0.0\\system.threading.ratelimiting.8.0.0.nupkg.sha512",
     "C:\\Users\\param\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
     "C:\\Users\\param\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512",
+    "C:\\Users\\param\\.nuget\\packages\\vaultsharp\\1.17.5.1\\vaultsharp.1.17.5.1.nupkg.sha512",
     "C:\\Users\\param\\.nuget\\packages\\yarp.reverseproxy\\2.3.0\\yarp.reverseproxy.2.3.0.nupkg.sha512"
   ],
   "logs": []
