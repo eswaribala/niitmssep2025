@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using Steeltoe.Discovery.Client;
 using Steeltoe.Extensions.Configuration.ConfigServer;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -113,7 +114,7 @@ builder.Services.AddAutoMapper(cfg =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(opt =>
 {
-    opt.SwaggerDoc("v1", new OpenApiInfo { Title = "TraderAPI", Version = "v1" });
+    opt.SwaggerDoc("v1", new OpenApiInfo { Title = "VehicleAPI", Version = "v1" });
 
 
 });
@@ -169,6 +170,10 @@ builder.Services
     .AddProjections()
     .AddFiltering()
     .AddSorting();
+//eureka connection
+
+builder.Services.AddDiscoveryClient(configuration);
+
 
 var app = builder.Build();
 
