@@ -1,10 +1,13 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Versioning;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using VaultSharp;
+using VaultSharp.V1.AuthMethods.Token;
 using VehicleAPI.Contexts;
 using VehicleAPI.DTO;
 using VehicleAPI.Graphql;
@@ -34,6 +37,65 @@ builder.Services.AddControllers()
 
 //Externalize the connection string for use in EF Core CLI tools
 
+// 1) Build base configuration (env, appsettings, etc.)
+var baseConfig = builder.Configuration;
+
+// 2) Read Vault config from env
+var vaultAddr = baseConfig["Vault:BaseUrl"];
+var vaultToken = baseConfig["Vault:RootToken"];
+var vaultKvPath = baseConfig["Vault:SecretPath"];
+
+// 3) Setup Vault client (Token auth for dev)
+IVaultClient? vaultClient = null;
+if (!string.IsNullOrWhiteSpace(vaultToken))
+{
+    var authMethod = new TokenAuthMethodInfo(vaultToken);
+    var settings = new VaultClientSettings(vaultAddr, authMethod)
+    {
+        ContinueAsyncTasksOnCapturedContext = false
+    };
+    vaultClient = new VaultClient(settings);
+}
+
+// 4) Pull secrets once and merge into config (in-memory)
+var secrets = new Dictionary<string, string?>();
+var user = "";
+var password = "";
+if (vaultClient != null)
+{
+    // KV v2: read at /secret/data/myapp (not /secret/myapp)
+    var kv = await vaultClient.V1.Secrets.KeyValue.V2.ReadSecretAsync(
+     path: baseConfig["Vault:Path"],
+     mountPoint: baseConfig["Vault:MountPoint"]
+ );
+
+    // Flatten KV into ASP.NET style keys (supports nested configuration)
+    foreach (var kvp in kv.Data.Data)
+    {
+        secrets[kvp.Key] = kvp.Value?.ToString();
+    }
+    var data = kv.Data.Data; // Dictionary<string, object?>
+
+    user = data.TryGetValue("username", out var u) ? u?.ToString() : "sa";
+    password = data.TryGetValue("password", out var p) ? p?.ToString() : null;
+}
+
+Console.WriteLine("Secrets loaded from Vault: " + user);
+
+SqlConnectionStringBuilder providerCs = new SqlConnectionStringBuilder();
+providerCs.UserID = user;
+providerCs.Password = password;
+
+providerCs.InitialCatalog = "VehicleDB";
+//providerCs.InitialCatalog = "TraderDB";
+providerCs.DataSource = @"Parameswari\MSSQLSERVER2025";
+//providerCs.DataSource = configuration["username"] + "\\" + configuration["servername"];
+providerCs.Encrypt = true;
+providerCs.TrustServerCertificate = true;
+providerCs.MultipleActiveResultSets = true;
+
+builder.Services.AddDbContext<VehicleContext>(o =>
+o.UseSqlServer(providerCs.ToString(), sql => sql.EnableRetryOnFailure(maxRetryCount: 5, maxRetryDelay: TimeSpan.FromSeconds(10), errorNumbersToAdd: null)));
 
 
 builder.Services.AddTransient<IVehicleRepo,VehicleRepo>();
