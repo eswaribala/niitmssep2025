@@ -1,4 +1,6 @@
-﻿using VehicleAPI.Contexts;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Identity.Client;
+using VehicleAPI.Contexts;
 using VehicleAPI.DTO;
 using VehicleAPI.Models;
 
@@ -20,9 +22,36 @@ namespace VehicleAPI.Graphql
                 FuelType = input.FuelType
                
             };
-            db.Vehicles.Add(vehicle);
-            db.SaveChangesAsync();
+            await db.Vehicles.AddAsync(vehicle);
+            await db.SaveChangesAsync();
             return vehicle;
+        }
+
+
+        public async Task<Vehicle> UpdateVehicle([Service] VehicleContext db, string id, string color)
+        {
+            var vehicle = await db.Vehicles.FirstOrDefaultAsync(v => v.RegistrationId == id);
+            if (vehicle is null)
+            {
+                throw new Exception("Vehicle not found");
+            }
+
+            vehicle.Color = color;
+            
+            await db.SaveChangesAsync();
+            return vehicle;
+        }
+
+        public async Task<bool> DeleteVehicle([Service] VehicleContext db, string id)
+        {
+            var vehicle = await db.Vehicles.FirstOrDefaultAsync(v => v.RegistrationId == id);
+            if (vehicle is null)
+            {
+                throw new Exception("Vehicle not found");
+            }
+            db.Vehicles.Remove(vehicle);
+            await db.SaveChangesAsync();
+            return true;
         }
 
     }
