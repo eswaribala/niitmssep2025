@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using Steeltoe.Extensions.Configuration.ConfigServer;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using VaultSharp;
@@ -17,6 +18,9 @@ using VehicleAPI.Repositories;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.AddServiceDefaults();
+//access config server
+builder.Configuration.AddConfigServer();
+ConfigurationManager configuration = builder.Configuration;
 
 // Add services to the container.
 
@@ -38,12 +42,12 @@ builder.Services.AddControllers()
 //Externalize the connection string for use in EF Core CLI tools
 
 // 1) Build base configuration (env, appsettings, etc.)
-var baseConfig = builder.Configuration;
+//var baseConfig = builder.Configuration;
 
 // 2) Read Vault config from env
-var vaultAddr = baseConfig["Vault:BaseUrl"];
-var vaultToken = baseConfig["Vault:RootToken"];
-var vaultKvPath = baseConfig["Vault:SecretPath"];
+var vaultAddr = configuration["vaulturl"];
+var vaultToken = configuration["roottoken"];
+var vaultKvPath = configuration["secretpath"];
 
 // 3) Setup Vault client (Token auth for dev)
 IVaultClient? vaultClient = null;
@@ -65,8 +69,8 @@ if (vaultClient != null)
 {
     // KV v2: read at /secret/data/myapp (not /secret/myapp)
     var kv = await vaultClient.V1.Secrets.KeyValue.V2.ReadSecretAsync(
-     path: baseConfig["Vault:Path"],
-     mountPoint: baseConfig["Vault:MountPoint"]
+     path: configuration["path"],
+     mountPoint: configuration["mountpath"]
  );
 
     // Flatten KV into ASP.NET style keys (supports nested configuration)
@@ -86,9 +90,9 @@ SqlConnectionStringBuilder providerCs = new SqlConnectionStringBuilder();
 providerCs.UserID = user;
 providerCs.Password = password;
 
-providerCs.InitialCatalog = "VehicleDB";
+providerCs.InitialCatalog = configuration["dbname"];
 //providerCs.InitialCatalog = "TraderDB";
-providerCs.DataSource = @"Parameswari\MSSQLSERVER2025";
+providerCs.DataSource = configuration["machinename"] + "\\" + configuration["servername"];
 //providerCs.DataSource = configuration["username"] + "\\" + configuration["servername"];
 providerCs.Encrypt = true;
 providerCs.TrustServerCertificate = true;
