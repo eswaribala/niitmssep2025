@@ -253,3 +253,7 @@ E:\boeingsep2025ws\VehicleAPI\VehicleAPI\bin\Debug\net9.0\Steeltoe.Extensions.Co
 E:\boeingsep2025ws\VehicleAPI\VehicleAPI\bin\Debug\net9.0\Steeltoe.Extensions.Configuration.ConfigServerCore.dll
 E:\boeingsep2025ws\VehicleAPI\VehicleAPI\bin\Debug\net9.0\Steeltoe.Extensions.Configuration.PlaceholderBase.dll
 E:\boeingsep2025ws\VehicleAPI\VehicleAPI\bin\Debug\net9.0\System.Reflection.MetadataLoadContext.dll
+E:\boeingsep2025ws\VehicleAPI\VehicleAPI\bin\Debug\net9.0\Steeltoe.Connector.Abstractions.dll
+E:\boeingsep2025ws\VehicleAPI\VehicleAPI\bin\Debug\net9.0\Steeltoe.Connector.ConnectorBase.dll
+E:\boeingsep2025ws\VehicleAPI\VehicleAPI\bin\Debug\net9.0\Steeltoe.Discovery.ClientBase.dll
+E:\boeingsep2025ws\VehicleAPI\VehicleAPI\bin\Debug\net9.0\Steeltoe.Discovery.Eureka.dll
