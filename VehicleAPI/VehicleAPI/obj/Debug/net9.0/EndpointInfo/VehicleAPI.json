@@ -101,11 +101,11 @@
         ],
         "parameters": [
           {
-            "name": "id",
-            "in": "query",
+            "name": "regNo",
+            "in": "path",
+            "required": true,
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string"
             }
           },
           {
@@ -115,35 +115,8 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "regNo",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
-        "requestBody": {
-          "content": {
-            "application/json; x-api-version=1.0": {
-              "schema": {
-                "type": "string"
-              }
-            },
-            "text/json; x-api-version=1.0": {
-              "schema": {
-                "type": "string"
-              }
-            },
-            "application/*+json; x-api-version=1.0": {
-              "schema": {
-                "type": "string"
-              }
-            }
-          }
-        },
         "responses": {
           "200": {
             "description": "OK"
@@ -229,9 +202,9 @@
             "type": "string",
             "nullable": true
           },
-          "color": {
+          "dor": {
             "type": "string",
-            "nullable": true
+            "format": "date-time"
           },
           "chassisNo": {
             "type": "string",
@@ -241,9 +214,9 @@
             "type": "string",
             "nullable": true
           },
-          "dor": {
+          "color": {
             "type": "string",
-            "format": "date-time"
+            "nullable": true
           },
           "fuelType": {
             "$ref": "#/components/schemas/FuelType"

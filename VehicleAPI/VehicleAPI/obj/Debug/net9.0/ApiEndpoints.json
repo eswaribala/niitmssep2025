@@ -76,11 +76,6 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
         "Name": "regNo",
         "Type": "System.String",
         "IsRequired": true
@@ -88,11 +83,6 @@
       {
         "Name": "color",
         "Type": "System.String",
-        "IsRequired": true
-      },
-      {
-        "Name": "regNo",
-        "Type": "",
         "IsRequired": true
       }
     ],

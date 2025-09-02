@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Cors;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using VehicleAPI.DTO;
 using VehicleAPI.Models;
@@ -16,23 +17,22 @@ namespace VehicleAPI.Controllers
     public class VehiclesController : Controller
     {
         private IVehicleRepo _vehicleRepo;
+        private readonly IMapper _mapper;
 
-        public VehiclesController(IVehicleRepo vehicleRepo)
+        public VehiclesController(IVehicleRepo vehicleRepo,IMapper mapper)
         {
             _vehicleRepo = vehicleRepo;
+            _mapper = mapper;
         }
 
 
 
         // GET: api/<VehiclesController>
         [HttpGet]
-        public async Task<IEnumerable<VehicleReadDTO>> Get()
+        public async Task<ActionResult<IEnumerable<VehicleReadDTO>>> Get()
         {
-            var vehicle = await _vehicleRepo.GetVehicles();
-            var result = vehicle.Select(v => new VehicleReadDTO(
-            v.RegistrationId,v.Maker,v.Color,v.ChassisNo,v.EngineNo,v.DOR,v.FuelType
-       ));
-            return result;
+            var vehicles = await _vehicleRepo.GetVehicles();
+            return Ok(_mapper.Map<IEnumerable<VehicleReadDTO>>(vehicles));
         }
 
         // GET api/<VehiclesController>/5
@@ -40,10 +40,7 @@ namespace VehicleAPI.Controllers
         public async Task<ActionResult> Get(string regNo)
         {
             var vehicle= await _vehicleRepo.GetVehicle(regNo);
-            return Ok(new VehicleReadDTO(
-              vehicle.RegistrationId, vehicle.Maker, vehicle.Color, vehicle.ChassisNo, vehicle.EngineNo, vehicle.DOR, vehicle.FuelType
-
-         ));
+            return Ok(_mapper.Map<VehicleReadDTO>(vehicle));
         }
 
         // POST api/<VehiclesController>
@@ -51,21 +48,9 @@ namespace VehicleAPI.Controllers
         public async Task<IActionResult> Post([FromBody] VehicleDTO vehicleDTO)
         {
             if (!ModelState.IsValid) return ValidationProblem(ModelState);
-            var entity = new Vehicle
-            {
-                RegistrationId = vehicleDTO.RegistrationId,
-                Maker = vehicleDTO.Maker,
-                DOR = vehicleDTO.DOR,
-                ChassisNo = vehicleDTO.ChassisNo,
-                EngineNo = vehicleDTO.EngineNo,
-                Color = vehicleDTO.Color,
-                FuelType = vehicleDTO.FuelType
-            };
+            var entity = _mapper.Map<Vehicle>(vehicleDTO);
             var vehicle=await _vehicleRepo.AddVehicle(entity);
-            return Ok(new VehicleReadDTO(
-             vehicle.RegistrationId, vehicle.Maker, vehicle.Color, vehicle.ChassisNo, vehicle.EngineNo, vehicle.DOR, vehicle.FuelType
-
-        ));
+            return Ok(_mapper.Map<VehicleReadDTO>(vehicle));
 
 
         }
@@ -75,9 +60,7 @@ namespace VehicleAPI.Controllers
         public async Task<IActionResult> Put(string regNo,string color)
         {
             var vehicle = await _vehicleRepo.UpdateVehicle(regNo, color);
-            return Ok(new VehicleReadDTO(
-                         vehicle.RegistrationId, vehicle.Maker, vehicle.Color, vehicle.ChassisNo, vehicle.EngineNo, vehicle.DOR, vehicle.FuelType));
-
+            return Ok(_mapper.Map<VehicleReadDTO>(vehicle));
         }
 
         // DELETE api/<VehiclesController>/5

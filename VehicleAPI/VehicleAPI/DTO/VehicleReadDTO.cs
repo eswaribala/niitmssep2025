@@ -2,5 +2,5 @@
 
 namespace VehicleAPI.DTO
 {
-   public record VehicleReadDTO(string RegNo,string model,string color, string chassisNo,string engineNo, DateTime dor, FuelType fuelType);
+   public record VehicleReadDTO(string RegNo,string model, DateTime dor,  string chassisNo,string engineNo, string color, FuelType fuelType);
 }

@@ -1,3 +1,4 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.EntityFrameworkCore;
@@ -5,6 +6,7 @@ using Microsoft.OpenApi.Models;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using VehicleAPI.Contexts;
+using VehicleAPI.DTO;
 using VehicleAPI.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -30,6 +32,12 @@ builder.Services.AddDbContext<VehicleContext>(options =>
 
 
 builder.Services.AddTransient<IVehicleRepo,VehicleRepo>();
+
+// Manual AutoMapper config without the DI helper package
+builder.Services.AddAutoMapper(cfg =>
+{
+    cfg.AddProfile<VehicleProfile>();
+});
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(opt =>
@@ -102,7 +110,12 @@ app.MapControllers();
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<VehicleContext>();
-    db.Database.Migrate();
+    if (db.Database.GetPendingMigrations().Any())
+    {
+        db.Database.Migrate();
+    }
 }
+
+
 
 app.Run();
