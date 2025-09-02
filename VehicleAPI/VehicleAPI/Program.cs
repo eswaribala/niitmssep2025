@@ -9,7 +9,7 @@ using VehicleAPI.Contexts;
 using VehicleAPI.DTO;
 using VehicleAPI.Graphql;
 using VehicleAPI.Repositories;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
