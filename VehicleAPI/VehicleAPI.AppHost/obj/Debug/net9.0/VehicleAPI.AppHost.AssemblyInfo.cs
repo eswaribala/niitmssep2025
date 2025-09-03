@@ -26,7 +26,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("VehicleAPI.AppHost")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d19f98f867273441be647e96e1ae66ad246cf0d9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0fdc123aa1b3e8c2d52c5c56022b7d46c12221c1")]
 [assembly: System.Reflection.AssemblyProductAttribute("VehicleAPI.AppHost")]
 [assembly: System.Reflection.AssemblyTitleAttribute("VehicleAPI.AppHost")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

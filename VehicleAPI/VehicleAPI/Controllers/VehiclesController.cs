@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using VehicleAPI.DTO;
@@ -28,6 +29,7 @@ namespace VehicleAPI.Controllers
 
 
         // GET: api/<VehiclesController>
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<VehicleReadDTO>>> Get()
         {

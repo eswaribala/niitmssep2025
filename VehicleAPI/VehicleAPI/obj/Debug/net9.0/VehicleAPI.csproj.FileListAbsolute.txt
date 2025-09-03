@@ -257,3 +257,5 @@ E:\boeingsep2025ws\VehicleAPI\VehicleAPI\bin\Debug\net9.0\Steeltoe.Connector.Abs
 E:\boeingsep2025ws\VehicleAPI\VehicleAPI\bin\Debug\net9.0\Steeltoe.Connector.ConnectorBase.dll
 E:\boeingsep2025ws\VehicleAPI\VehicleAPI\bin\Debug\net9.0\Steeltoe.Discovery.ClientBase.dll
 E:\boeingsep2025ws\VehicleAPI\VehicleAPI\bin\Debug\net9.0\Steeltoe.Discovery.Eureka.dll
+E:\boeingsep2025ws\VehicleAPI\VehicleAPI\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
+E:\boeingsep2025ws\VehicleAPI\VehicleAPI\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

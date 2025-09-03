@@ -1,11 +1,14 @@
 using AutoMapper;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Steeltoe.Discovery.Client;
 using Steeltoe.Extensions.Configuration.ConfigServer;
+using System.Security.Claims;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using VaultSharp;
@@ -93,7 +96,8 @@ providerCs.Password = password;
 
 providerCs.InitialCatalog = configuration["dbname"];
 //providerCs.InitialCatalog = "TraderDB";
-providerCs.DataSource = configuration["machinename"] + "\\" + configuration["servername"];
+providerCs.DataSource = "host.docker.internal,1403";
+//providerCs.DataSource = configuration["machinename"] + "\\" + configuration["servername"];
 //providerCs.DataSource = configuration["username"] + "\\" + configuration["servername"];
 providerCs.Encrypt = true;
 providerCs.TrustServerCertificate = true;
@@ -110,11 +114,62 @@ builder.Services.AddAutoMapper(cfg =>
 {
     cfg.AddProfile<VehicleProfile>();
 });
+
+//oauth2 setup could go here
+var authority = builder.Configuration["Jwt:Authority"]!;
+var validateAudience = bool.TryParse(builder.Configuration["Jwt:ValidateAudience"], out var va) && va;
+var audience = builder.Configuration["Jwt:Audience"];
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+.AddJwtBearer(o =>
+{
+    // where the API can fetch OIDC metadata & JWKS from:
+    o.Authority = "http://host.docker.internal:8080/realms/master"; // Windows/Mac
+    // (Linux: use your host IP, e.g. http://172.17.0.1:8080/realms/master)
+    o.RequireHttpsMetadata = false;
+
+    // EXACT string that’s inside your JWT `iss`:
+    o.TokenValidationParameters = new()
+    {
+        ValidateIssuer = true,
+        ValidIssuer = "http://localhost:8080/realms/master",
+        ValidateAudience = false
+    };
+});
+
+builder.Services.AddAuthorization();
+
+
+
+
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(opt =>
 {
     opt.SwaggerDoc("v1", new OpenApiInfo { Title = "VehicleAPI", Version = "v1" });
+    opt.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
+    {
+        Type = SecuritySchemeType.OAuth2,
+        Flows = new OpenApiOAuthFlows
+        {
+            AuthorizationCode = new OpenApiOAuthFlow
+            {
+                AuthorizationUrl = new Uri(builder.Configuration["SwaggerOAuth:AuthorizationUrl"]!),
+                TokenUrl = new Uri(builder.Configuration["SwaggerOAuth:TokenUrl"]!),
+                Scopes = new Dictionary<string, string>
+                {
+                    ["developer"] = "Developer scope"
+                }
+            }
+        }
+    });
+
+    opt.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        [new OpenApiSecurityScheme
+        { Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "oauth2" } }
+        ] = new[] { "developer" }
+    });
 
 
 });
@@ -183,25 +238,37 @@ app.MapDefaultEndpoints();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(ui =>
+    {
+        ui.OAuthClientId(builder.Configuration["SwaggerOAuth:ClientId"]);
+        ui.OAuthUsePkce();
+        ui.OAuthScopes(builder.Configuration["SwaggerOAuth:Scope"]);
+    });
 }
 
 app.UseHttpsRedirection();
 app.UseCors(policyName);
-
+app.UseAuthentication();
 app.UseAuthorization();
+app.MapGet("/vehicles", async () => "ok").RequireAuthorization();
+// Public
+app.MapGet("/public", () => new { ok = true });
 
+// Require the "developer" scope
+app.MapGet("/dev/only", () => new { secret = "hello developer" })
+   .RequireAuthorization("developer");
 app.MapControllers();
 //Apply migrations at startup (nice for containers/dev)
-using (var scope = app.Services.CreateScope())
-{
-    var db = scope.ServiceProvider.GetRequiredService<VehicleContext>();
-    if (db.Database.GetPendingMigrations().Any())
-    {
-        db.Database.Migrate();
-    }
-}
+//using (var scope = app.Services.CreateScope())
+//{
+//    var db = scope.ServiceProvider.GetRequiredService<VehicleContext>();
+//    if (db.Database.GetPendingMigrations().Any())
+//    {
+//        db.Database.Migrate();
+//    }
+//}
 
 app.MapGraphQL("/graphql");
+// Public
 
 app.Run();
