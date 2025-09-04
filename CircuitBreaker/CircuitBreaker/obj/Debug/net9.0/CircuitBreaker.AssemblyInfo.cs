@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CircuitBreaker")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e3582cdb2111a15b5884f84c62177b91d969d2a8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ed0e03f149e05391d716b3ed744e773a5488457e")]
 [assembly: System.Reflection.AssemblyProductAttribute("CircuitBreaker")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CircuitBreaker")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

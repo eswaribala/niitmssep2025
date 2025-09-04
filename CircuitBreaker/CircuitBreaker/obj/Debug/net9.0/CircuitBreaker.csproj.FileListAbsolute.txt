@@ -66,10 +66,12 @@ E:\boeingsep2025ws\CircuitBreaker\CircuitBreaker\obj\Debug\net9.0\staticwebasset
 E:\boeingsep2025ws\CircuitBreaker\CircuitBreaker\obj\Debug\net9.0\staticwebassets.build.json.cache
 E:\boeingsep2025ws\CircuitBreaker\CircuitBreaker\obj\Debug\net9.0\staticwebassets.development.json
 E:\boeingsep2025ws\CircuitBreaker\CircuitBreaker\obj\Debug\net9.0\staticwebassets.build.endpoints.json
-E:\boeingsep2025ws\CircuitBreaker\CircuitBreaker\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
 E:\boeingsep2025ws\CircuitBreaker\CircuitBreaker\obj\Debug\net9.0\CircuitB.7DDBCD99.Up2Date
 E:\boeingsep2025ws\CircuitBreaker\CircuitBreaker\obj\Debug\net9.0\CircuitBreaker.dll
 E:\boeingsep2025ws\CircuitBreaker\CircuitBreaker\obj\Debug\net9.0\refint\CircuitBreaker.dll
 E:\boeingsep2025ws\CircuitBreaker\CircuitBreaker\obj\Debug\net9.0\CircuitBreaker.pdb
 E:\boeingsep2025ws\CircuitBreaker\CircuitBreaker\obj\Debug\net9.0\CircuitBreaker.genruntimeconfig.cache
 E:\boeingsep2025ws\CircuitBreaker\CircuitBreaker\obj\Debug\net9.0\ref\CircuitBreaker.dll
+E:\boeingsep2025ws\CircuitBreaker\CircuitBreaker\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
+E:\boeingsep2025ws\CircuitBreaker\CircuitBreaker\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+E:\boeingsep2025ws\CircuitBreaker\CircuitBreaker\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
