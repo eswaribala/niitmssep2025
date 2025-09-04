@@ -118,3 +118,4 @@ E:\boeingsep2025ws\VehicleAPI\bin\Debug\Microsoft.AspNetCore.Authentication.JwtB
 E:\boeingsep2025ws\VehicleAPI\bin\Debug\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 E:\boeingsep2025ws\VehicleAPI\bin\Debug\System.IdentityModel.Tokens.Jwt.dll
 E:\boeingsep2025ws\VehicleAPI\bin\Debug\Microsoft.IdentityModel.Protocols.dll
+E:\boeingsep2025ws\VehicleAPI\bin\Debug\Confluent.Kafka.dll

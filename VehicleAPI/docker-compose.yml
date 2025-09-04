@@ -32,7 +32,7 @@ services:
       - sqlservervehicleservice
   sqlservervehicleservice:  
     image: mcr.microsoft.com/mssql/server 
-    hostname: 'sqlserverpolicyservice'  
+    hostname: 'sqlservervehicleservice'  
     environment:  
       ACCEPT_EULA: 'Y' 
       SA_PASSWORD: "Vignesh@95!"  

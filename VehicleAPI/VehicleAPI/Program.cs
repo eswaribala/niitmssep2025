@@ -16,6 +16,7 @@ using VaultSharp.V1.AuthMethods.Token;
 using VehicleAPI.Contexts;
 using VehicleAPI.DTO;
 using VehicleAPI.Graphql;
+using VehicleAPI.Producers;
 using VehicleAPI.Repositories;
 
 
@@ -228,6 +229,17 @@ builder.Services
 //eureka connection
 
 builder.Services.AddDiscoveryClient(configuration);
+
+//kafka producer setup
+// Bind Kafka options from config
+builder.Services.Configure<KafkaProducerOptions>(builder.Configuration.GetSection("Kafka"));
+
+// Register a singleton producer (recommended by Confluent for reuse)
+builder.Services.AddSingleton<IVehicleInfoProducer, VehicleInfoProducer>();
+
+// Health checks
+builder.Services.AddHealthChecks();
+
 
 
 var app = builder.Build();
