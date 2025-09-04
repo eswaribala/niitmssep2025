@@ -13,11 +13,12 @@ namespace VehicleInfoConsumer.Listeners
         {
             this.repo = repo;
         }
-        public Task<bool> HandleAsync(string topic, string key, string value, Headers headers, CancellationToken ct)
+        public Task<bool> HandleAsync(string topic, string key, string value, Headers headers, TopicPartitionOffset topicPartitionOffset, CancellationToken ct)
         {
             // Example: deserialize and do something
             try
             {
+                
                 var vehicle = JsonSerializer.Deserialize<VehicleReadDTO>(value) ?? null;
                 Console.WriteLine($"[VehicleInfoHandler] topic={topic} key={key} id={vehicle.RegNo} model={vehicle.model} dor={vehicle.dor}");
                 // todo: call your domain logic / DB, etc.
@@ -29,7 +30,9 @@ namespace VehicleInfoConsumer.Listeners
                     ChassisNo = vehicle.chassisNo,
                     EngineNo = vehicle.engineNo,
                     Color = vehicle.color,
-                    FuelType = vehicle.fuelType
+                    FuelType = vehicle.fuelType,
+                    Key = headers.ToString(),
+                    PartitionOffset = topicPartitionOffset.Offset.ToString()
                 };
                 repo.AddVechicle(vehicleBson);
 

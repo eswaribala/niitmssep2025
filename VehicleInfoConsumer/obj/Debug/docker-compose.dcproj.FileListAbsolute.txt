@@ -22,3 +22,9 @@ E:\boeingsep2025ws\VehicleInfoConsumer\bin\Debug\VehicleInfoConsumer.pdb
 E:\boeingsep2025ws\VehicleInfoConsumer\obj\Debug\docker-compose.dcproj.AssemblyReference.cache
 E:\boeingsep2025ws\VehicleInfoConsumer\obj\Debug\docker-compose.dcproj.CoreCompileInputs.cache
 E:\boeingsep2025ws\VehicleInfoConsumer\obj\Debug\docker-c.35A3FFBA.Up2Date
+E:\boeingsep2025ws\VehicleInfoConsumer\bin\Debug\MongoDB.Driver.dll
+E:\boeingsep2025ws\VehicleInfoConsumer\bin\Debug\MongoDB.Bson.dll
+E:\boeingsep2025ws\VehicleInfoConsumer\bin\Debug\DnsClient.dll
+E:\boeingsep2025ws\VehicleInfoConsumer\bin\Debug\SharpCompress.dll
+E:\boeingsep2025ws\VehicleInfoConsumer\bin\Debug\ZstdSharp.dll
+E:\boeingsep2025ws\VehicleInfoConsumer\bin\Debug\Snappier.dll

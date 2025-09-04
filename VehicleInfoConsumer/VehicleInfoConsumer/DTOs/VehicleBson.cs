@@ -15,6 +15,10 @@ namespace VehicleInfoConsumer.DTOs
         public string EngineNo { get; set; }
         public string Color { get; set; }
         public FuelType FuelType {  get; set; }
+        public string Key {  get; set; }
+        public string PartitionOffset { get; set; }
+
+
     }
 
 }

@@ -67,3 +67,9 @@ E:\boeingsep2025ws\VehicleInfoConsumer\VehicleInfoConsumer\obj\Debug\net9.0\refi
 E:\boeingsep2025ws\VehicleInfoConsumer\VehicleInfoConsumer\obj\Debug\net9.0\VehicleInfoConsumer.pdb
 E:\boeingsep2025ws\VehicleInfoConsumer\VehicleInfoConsumer\obj\Debug\net9.0\VehicleInfoConsumer.genruntimeconfig.cache
 E:\boeingsep2025ws\VehicleInfoConsumer\VehicleInfoConsumer\obj\Debug\net9.0\ref\VehicleInfoConsumer.dll
+E:\boeingsep2025ws\VehicleInfoConsumer\VehicleInfoConsumer\bin\Debug\net9.0\DnsClient.dll
+E:\boeingsep2025ws\VehicleInfoConsumer\VehicleInfoConsumer\bin\Debug\net9.0\MongoDB.Bson.dll
+E:\boeingsep2025ws\VehicleInfoConsumer\VehicleInfoConsumer\bin\Debug\net9.0\MongoDB.Driver.dll
+E:\boeingsep2025ws\VehicleInfoConsumer\VehicleInfoConsumer\bin\Debug\net9.0\SharpCompress.dll
+E:\boeingsep2025ws\VehicleInfoConsumer\VehicleInfoConsumer\bin\Debug\net9.0\Snappier.dll
+E:\boeingsep2025ws\VehicleInfoConsumer\VehicleInfoConsumer\bin\Debug\net9.0\ZstdSharp.dll

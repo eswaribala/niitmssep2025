@@ -88,7 +88,7 @@ namespace VehicleInfoConsumer.Services
                     bool commit = false;
                     try
                     {
-                        commit = await _handler.HandleAsync(cr.Topic, cr.Message.Key!, cr.Message.Value!, cr.Message.Headers, stoppingToken);
+                        commit = await _handler.HandleAsync(cr.Topic, cr.Message.Key!, cr.Message.Value!, cr.Message.Headers, cr.TopicPartitionOffset, stoppingToken);
                         if (commit && !_opts.EnableAutoCommit)
                         {
                             consumer.Commit(cr);
