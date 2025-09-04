@@ -1,4 +1,5 @@
 using VehicleInfoConsumer.Listeners;
+using VehicleInfoConsumer.Repository;
 using VehicleInfoConsumer.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,6 +19,7 @@ builder.Services.AddSingleton<IMessageHandler, VehicleInfoHandler>();
 
 // Background Kafka consumer
 builder.Services.AddHostedService<VehicleBackgroundService>();
+builder.Services.AddTransient<IVehicleRepo,VehicleRepo>();
 
 // Health checks
 builder.Services.AddHealthChecks();
