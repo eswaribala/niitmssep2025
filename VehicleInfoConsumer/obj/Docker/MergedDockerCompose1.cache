@@ -22,7 +22,9 @@ services:
       ASPNETCORE_HTTP_PORTS: "8080"
       ASPNETCORE_HTTPS_PORTS: "8081"
       ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS: "true"
+      ASPNETCORE_URLS: http://0.0.0.0:5000
       DOTNET_USE_POLLING_FILE_WATCHER: "1"
+      KAFKA__BOOTSTRAP_SERVERS: kafka:9092
       NUGET_FALLBACK_PACKAGES: /.nuget/fallbackpackages
     image: vehicleinfoconsumer:dev
     labels:
@@ -31,8 +33,12 @@ services:
       com.microsoft.visualstudio.debuggee.program: dotnet
       com.microsoft.visualstudio.debuggee.workingdirectory: /app
     networks:
-      default: null
+      boeingnetwork: null
     ports:
+      - mode: ingress
+        target: 5000
+        published: "5000"
+        protocol: tcp
       - mode: ingress
         target: 8080
         protocol: tcp
@@ -105,5 +111,6 @@ services:
         bind:
           create_host_path: true
 networks:
-  default:
-    name: dockercompose3919136541614149927_default
+  boeingnetwork:
+    name: boeingnetwork
+    external: true

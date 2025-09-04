@@ -65,6 +65,10 @@
             "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
               "target": "Package",
               "version": "[1.22.1, )"
+            },
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[3.4.3, )"
             }
           },
           "imports": [
