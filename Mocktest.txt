@@ -1,0 +1,3 @@
+dotnet new xunit -n VehicleAPI.Tests -o .\VehicleAPI.Tests
+dotnet sln add .\VehicleAPI.Tests\VehicleAPI.Tests.csproj
+dotnet test .\VehicleAPI.sln -v n
