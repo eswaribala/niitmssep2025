@@ -1,0 +1,32 @@
+
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml
+
+kubectl get all --all-namespaces
+
+kubectl get all -n kubernetes-dashboard
+
+
+
+goto the folder where you are haing admin user configuration
+
+kubectl apply -f  dashboard-adminuser.yaml
+
+kubectl apply -f admin-role-binding.yml
+
+go to powershell run the following cmd
+
+kubectl -n kubernetes-dashboard create token admin-user
+
+token
+eyJhbGciOiJSUzI1NiIsImtpZCI6InJUVjJjdExHVU1LWjE1eFZ5RUt5bWg4MUVkLTM0NE5oc3RWclNscm50SzQifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjLmNsdXN0ZXIubG9jYWwiXSwiZXhwIjoxNzU1MTAzMjQwLCJpYXQiOjE3NTUwOTk2NDAsImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwianRpIjoiODEyMTZiNzQtMzFlNS00NzlmLWFmZmMtODBjNDIwN2JlZmJhIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJrdWJlcm5ldGVzLWRhc2hib2FyZCIsInNlcnZpY2VhY2NvdW50Ijp7Im5hbWUiOiJhZG1pbi11c2VyIiwidWlkIjoiZTY3YTM1OWEtZTVmOC00M2FjLWFlN2MtNjU3NmE5NmRiYzYzIn19LCJuYmYiOjE3NTUwOTk2NDAsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDprdWJlcm5ldGVzLWRhc2hib2FyZDphZG1pbi11c2VyIn0.mbWSz3SVhizikCE3mWStjfWB0OIms3OghltwnObFEn5YCtyWE2JQWyW39l5vMLTKueQPdcWeryAGu9kksy7k7weQzkT8Ycd8-5MfWHEA4GXS0xf78XFocIzsx_tr5GPsySeG0L446UMszfohqrHlO9emtPw1U-GkKGrqaQNe9gMMrHuE2f1zALWYyQC9NOTooDEzo3maSN-sdlLiaHVMkQsYjjoPGcIApx9WjK8WGnVplAdwNJ3N55L6vzkxYNNpxtZMhph1L07te05Q5AucxvcSVsrttqfhfal5FOeDzrpMq183YxX_l_B6_yCuiFHqwI7OkE94lowXrWp0FmAgxA
+
+-------------------------------------------------------
+
+
+===========================
+kubectl proxy
+Starting to serve on 127.0.0.1:8001
+http://localhost:8001
+======================================================
+
+http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/
