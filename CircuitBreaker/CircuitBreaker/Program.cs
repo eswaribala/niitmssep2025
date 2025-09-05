@@ -26,7 +26,7 @@ builder.AddServiceDefaults();
 // Register HttpClient with resilience pipeline
 builder.Services.AddHttpClient("jsonApi", client =>
 {
-    client.BaseAddress = new Uri("https://jsonplaceholder.typicode.com/users");
+    client.BaseAddress = new Uri("http://localhost:1502/api/v1/Vehicles");
 })
 .AddResilienceHandler("resilience", pipeline =>
 {

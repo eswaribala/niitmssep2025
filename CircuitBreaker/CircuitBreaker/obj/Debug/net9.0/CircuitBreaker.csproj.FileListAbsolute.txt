@@ -85,3 +85,4 @@ E:\boeingsep2025ws\CircuitBreaker\CircuitBreaker\bin\Debug\net9.0\Steeltoe.Disco
 E:\boeingsep2025ws\CircuitBreaker\CircuitBreaker\bin\Debug\net9.0\Steeltoe.Discovery.Eureka.dll
 E:\boeingsep2025ws\CircuitBreaker\CircuitBreaker\bin\Debug\net9.0\Steeltoe.Extensions.Configuration.Abstractions.dll
 E:\boeingsep2025ws\CircuitBreaker\CircuitBreaker\bin\Debug\net9.0\System.Reflection.MetadataLoadContext.dll
+E:\boeingsep2025ws\CircuitBreaker\CircuitBreaker\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
