@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Http.Resilience;
 using Microsoft.OpenApi.Models;
 using Polly;
@@ -10,9 +11,10 @@ using System.Net.Http;
 using System.Text;
 using System.Threading;
 using System.Threading.RateLimiting;
-
+using Steeltoe.Discovery.Client;
 ResiliencePropertyKey<ILogger> LoggerKey = new("logger");
 var builder = WebApplication.CreateBuilder(args);
+ConfigurationManager configuration = builder.Configuration;
 builder.Logging.AddFilter("Polly", LogLevel.Error);
 builder.Logging.AddFilter("Microsoft.Extensions.Http.Resilience", LogLevel.Error);
 builder.Logging.AddFilter("Microsoft.Extensions.Http.Resilience.ResilienceHandler", LogLevel.Error);
@@ -24,7 +26,7 @@ builder.AddServiceDefaults();
 // Register HttpClient with resilience pipeline
 builder.Services.AddHttpClient("jsonApi", client =>
 {
-    client.BaseAddress = new Uri("https://jsonpla89ceholder.typicode.com/users123");
+    client.BaseAddress = new Uri("https://jsonplaceholder.typicode.com/users");
 })
 .AddResilienceHandler("resilience", pipeline =>
 {
@@ -80,7 +82,7 @@ builder.Services.AddHttpClient("jsonApi", client =>
     // Retry: 3 attempts, exponential backoff
     pipeline.AddRetry(new HttpRetryStrategyOptions
     {
-        MaxRetryAttempts = 5,
+        MaxRetryAttempts = 3,
         Delay = TimeSpan.FromMilliseconds(200),
         BackoffType = DelayBackoffType.Exponential,
         UseJitter = true,
@@ -117,6 +119,9 @@ builder.Services.AddHttpClient("jsonApi", client =>
     });
 });
 
+//eureka connection
+
+builder.Services.AddDiscoveryClient(configuration);
 
 
 

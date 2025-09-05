@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CamundaConsoleApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ed0e03f149e05391d716b3ed744e773a5488457e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2c43263975e55dd99d55a42f84973e0e253cd404")]
 [assembly: System.Reflection.AssemblyProductAttribute("CamundaConsoleApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CamundaConsoleApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
